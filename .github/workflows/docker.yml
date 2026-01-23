@@ -24,10 +24,16 @@ jobs:
         username: ${{github.repository_owner}}
         password: ${{secrets.GITHUB_TOKEN}}
 
+    - name: Convert repo name to lowercase for ghcr
+      id: repo_name
+      uses: ASzc/change-string-case-action@v6
+      with:
+        string: ${{ github.repository }}
+
     - name: Build and push Container
       uses: docker/build-push-action@v5
       with:
         platforms: linux/amd64,linux/arm64
         push: true
         context: "{{defaultContext}}"
-        tags: ghcr.io/${{ github.repository }}:latest
+        tags: ghcr.io/${{ steps.repo_name.outputs.lowercase }}:latest
