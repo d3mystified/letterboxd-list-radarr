@@ -6,8 +6,8 @@ import {
 } from "./util";
 import * as cache from "../cache/index";
 
-// Cache Lists for 12 hours
-const LIST_CACHE_TIMEOUT = 12 * 60 * 60;
+// Cache Lists for 1 hours
+const LIST_CACHE_TIMEOUT = 1 * 60 * 60;
 
 export interface LetterboxdPoster {
     slug: string;
